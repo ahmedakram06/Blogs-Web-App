@@ -10,7 +10,10 @@ async function bootstrap() {
 
   // ✅ Enable CORS
   app.enableCors({
-    origin: 'http://localhost:5173',
+    origin: [
+      'http://localhost:5173', // for local dev
+      'https://blogs-web-app-lyart.vercel.app', // deployed frontend
+    ],
     credentials: true,
   });
 
