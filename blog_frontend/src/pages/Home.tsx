@@ -37,13 +37,9 @@ export default function Home() {
     fetchBlogs();
   }, []);
 
-  // const filteredBlogs = blogs.filter((blog) =>
-  //   blog.title.toLowerCase().includes(searchQuery)
-  // );
-
-  const filteredBlogs = Array.isArray(blogs)
-    ? blogs.filter((blog) => blog.title.toLowerCase().includes(searchQuery))
-    : [];
+  const filteredBlogs = blogs.filter((blog) =>
+    blog.title.toLowerCase().includes(searchQuery)
+  );
 
   const paginatedBlogs = filteredBlogs.slice(
     (page - 1) * BLOGS_PER_PAGE,
