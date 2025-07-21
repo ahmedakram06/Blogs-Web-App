@@ -24,6 +24,7 @@ export default function MyBlogs() {
     try {
       setLoading(true);
       const data = await getMyBlogs(token);
+      console.log("Fetched blogs:", data); // 👈 Add this
       setBlogs(data);
     } catch (err: unknown) {
       const error = err as CustomError;
