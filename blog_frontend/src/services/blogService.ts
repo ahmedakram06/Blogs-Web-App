@@ -2,10 +2,24 @@ import axios from "axios";
 import { API_URL } from "../config/api";
 import type { Blog, CreateBlogDto } from "../types";
 
+// // Get all public blogs
+// export const getPublicBlogs = async (): Promise<Blog[]> => {
+//   const res = await axios.get<Blog[]>(`${API_URL}/blogs/public`);
+//   return res.data;
+// };
+
 // Get all public blogs
 export const getPublicBlogs = async (): Promise<Blog[]> => {
-  const res = await axios.get<Blog[]>(`${API_URL}/blogs/public`);
-  return res.data;
+  const res = await axios.get(`${API_URL}/blogs/public`);
+  const data = res.data;
+
+  console.log("Public blogs response:", data); // 🔍 Check if it's an array
+
+  if (!Array.isArray(data)) {
+    throw new Error("Expected an array of blogs, got: " + JSON.stringify(data));
+  }
+
+  return data;
 };
 
 // Get a single blog by ID
